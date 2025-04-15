@@ -44,3 +44,45 @@ class Teatro:
         for posto in posti_ordinati:
             stato = "Occupato" if posto.is_occupato() else "Libero"
             print(f"Fila {posto.get_fila()} - Posto {posto.get_numero()}: {stato}")
+
+# Creazione del menu a tendina
+def menu_teatro():
+    teatro = Teatro() # istanzia teatro
+
+    while True:
+        print("\n--- GESTIONE TEATRO ---")
+        print("1. Aggiungi posto")
+        print("2. Prenota posto")
+        print("3. Libera posto")
+        print("4. Mostra tutti i posti")
+        print("5. Esci")
+
+        scelta = input("Seleziona un'opzione (1-5): ")
+
+        if scelta == "1":
+            fila = input("Inserisci la fila (es. A): ").upper()
+            numero = int(input("Inserisci il numero del posto: "))
+            teatro.aggiungi_posto(numero, fila)
+
+        elif scelta == "2":
+            fila = input("Inserisci la fila del posto da prenotare: ").upper()
+            numero = int(input("Inserisci il numero del posto: "))
+            teatro.prenota_posto(numero, fila)
+
+        elif scelta == "3":
+            fila = input("Inserisci la fila del posto da liberare: ").upper()
+            numero = int(input("Inserisci il numero del posto: "))
+            teatro.libera_posto(numero, fila)
+
+        elif scelta == "4":
+            teatro.mostra_posti()
+
+        elif scelta == "5":
+            print("Uscita dal programma.")
+            break
+
+        else:
+            print("Scelta non valida. Riprova.")
+
+# Avvio del menu
+menu_teatro()
